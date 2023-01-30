@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100&effect=neon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:900">
+    <title>BookLib</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+<div class="container">
+    <div class="topRow">
+        <div class="logo">
+            <div class="neon"></div>
+        </div>
+        <div class="message">
+            <p>
+                A place that keeps ordered concerts. 
+            </p>
+        </div>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+            <em>Dark Mode</em>
+       </div>
+    </div>
+    <div class="addRow">
+      <form action="">
+        <div class="inputBox">
+          <div><label for="name">Band</label></div>
+          <div><input type="text" class="inputSpace" id="name" required minlength="3"></div>
+        </div>
+        <div class="inputBox">
+            <div><label for="author">Manager</label></div>
+            <div><input type="text" class="inputSpace" id="manager" required minlength="3"></div>
+        </div>
+        <div class="dropBox">
+          <label for="payment">Payment?</label>
+          <select name="read" id="payment">
+            <option value="Paid">Paid</option>
+            <option value="Waiting">Waiting</option>
+          </select>
+        </div>
+        <input type="submit" value="submit" class="button">
+      </form>
+    </div>
+    <div class="tableRow">
+      <table>
+        <tbody><tr>
+          <th>Band</th>
+          <th>Manager</th>
+          <th>Payment</th>
+          <th></th>
+        </tr>
+        </tbody>
+        <tbody>
+    <tr>
+      <td>Thom Borke</td>
+      <td>Lewis Cardless</td>
+      <td><button class="paymentBtn paymentGreen">Paid</button></td>
+      <td><button class="delete">delete</button></td>
+    </tr>
+    
+    <tr>
+      <td>Cardiohead</td>
+      <td>Tommy Nguyen</td>
+      <td><button class="paymentBtn paymentRed">Waiting</button></td>
+      <td><button class="delete">delete</button></td>
+    </tr>
+    </tbody>
+      </table>
+    </div>
+  </div>
+
+
+</body>
+</html>

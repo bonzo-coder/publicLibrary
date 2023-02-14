@@ -37,8 +37,12 @@
           <div><input type="text" class="inputSpace" id="name" required minlength="3"></div>
         </div>
         <div class="inputBox">
-            <div><label for="author">Manager</label></div>
+            <div><label for="manager">Manager</label></div>
             <div><input type="text" class="inputSpace" id="manager" required minlength="3"></div>
+        </div>
+        <div class="inputBox">
+            <div><label for="date">Date</label></div>
+            <div><input type="date" class="inputSpace" id="date" required></div>
         </div>
         <div class="dropBox">
           <label for="payment">Payment?</label>
@@ -55,14 +59,15 @@
         <tbody><tr>
           <th>Band</th>
           <th>Manager</th>
+          <th>Date</th>
           <th>Payment</th>
           <th></th>
         </tr>
-        </tbody>
-        <tbody>
+        </tbody><tbody id="bandTable">
     <tr>
       <td>Thom Borke</td>
       <td>Lewis Cardless</td>
+      <td>12.03.2023</td>
       <td><button class="paymentBtn paymentGreen">Paid</button></td>
       <td><button class="delete">delete</button></td>
     </tr>
@@ -70,6 +75,7 @@
     <tr>
       <td>Cardiohead</td>
       <td>Tommy Nguyen</td>
+      <td>15.03.2023</td>
       <td><button class="paymentBtn paymentRed">Waiting</button></td>
       <td><button class="delete">delete</button></td>
     </tr>

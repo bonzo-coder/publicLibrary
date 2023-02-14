@@ -23,24 +23,24 @@ function switchTheme(e) {
 
 toggleSwitch.addEventListener('change', switchTheme, false);
 
-// ------------------------------
-
-// Bands 
+//  Bands  /////////////////////////////////////
 
 let library;
 
 const initialData = [
-  { name: "Thom Borke", manager: "Lewis Cardless", payment: "Paid", color: "paymentGreen" },
-  { name: "Tupadam", manager: "Terry McNuck", payment: "Waiting" , color: "paymentRed"},
-  { name: "Cardiohead", manager: "Tommy Nguyen", payment: "Waiting" , color: "paymentRed"},
+  { name: "Thom Borke", manager: "Lewis Cardless", date: "12.03.2023", payment: "Paid", color: "paymentGreen" },
+  { name: "Tupadam", manager: "Terry McNuck", date: "15.03.2023", payment: "Waiting" , color: "paymentRed"},
+  { name: "Cardiohead", manager: "Tommy Nguyen", date: "17.03.2023", payment: "Waiting" , color: "paymentRed"},
 ];
 
 
 const $name = document.querySelector("#name");
 const $manager = document.querySelector("#manager");
 const $payment = document.querySelector("#payment");
+const $date = document.querySelector('#date');
 let $color = "";
-const $tableBody = document.querySelector("#band-table");
+let $newDate = "";
+const $bandTable = document.querySelector("#bandTable");
 
 const $form = document.querySelector("form").addEventListener("submit", (e) => {
   e.preventDefault();
@@ -64,33 +64,38 @@ const $table = document.querySelector("table").addEventListener("click", (e) => 
   });
 
 class Band {
-  constructor(name, manager, payment, color) {
+  constructor(name, manager, date, payment, color) {
     this.name = name;
     this.manager = manager;
+    this.date = date;
     this.payment = payment;
     this.color = color;
   }
 }
 
+function dateFix () {
+    $newDate = $date.value.split('-');
+    $newDate = $newDate.reverse().join('.');
+}
+
 function addBandToLibrary() {
-    
+    dateFix();
     if ($payment.value=="Waiting"){
         $color = "paymentRed";
      } else { $color = "paymentGreen";}
-     console.log($payment.value);
-  const newBand = new Band($name.value, $manager.value, $payment.value, $color);
-  library.push(newBand);
-  updateLocalStorage();
+    const newBand = new Band($name.value, $manager.value, $newDate, $payment.value, $color);
+    library.push(newBand);
+    updateLocalStorage();
 }
 
 function changePayment (band) {
     let btn = document.querySelector('.paymentBtn');
-  if (library[band].payment === "Paid") {
-    library[band].payment = "Waiting";
-    library[band].color = "paymentRed"
-  } else {
-    library[band].payment = "Paid";
-    library[band].color = "paymentGreen"    
+    if (library[band].payment === "Paid") {
+        library[band].payment = "Waiting";
+        library[band].color = "paymentRed"
+    } else {
+        library[band].payment = "Paid";
+        library[band].color = "paymentGreen"    
     }
 }
 
@@ -105,12 +110,13 @@ function findBand(libraryArray, name) {
 }
 
 function clearForm() {
-  $name.value = "";
-  $manager.value = "";
+    $name.value = "";
+    $manager.value = "";
+    $date.value = "";
 }
 
 function updateLocalStorage() {
-  localStorage.setItem("library", JSON.stringify(library));
+    localStorage.setItem("library", JSON.stringify(library));
 }
 
 function checkLocalStorage() {
@@ -127,17 +133,18 @@ function deleteBand(currentBand) {
 
 function printTable() {
   checkLocalStorage();
-  $tableBody.innerHTML = "";
+  $bandTable.innerHTML = "";
   library.forEach((band) => {
     const htmlBand = `
       <tr>
         <td>${band.name}</td>
         <td>${band.manager}</td>
+        <td>${band.date}</td>
         <td><button class="paymentBtn ${band.color}">${band.payment}</button></td>
         <td><button class="delete">delete</button></td>
       </tr>
       `;
-    $tableBody.insertAdjacentHTML("afterbegin", htmlBand);
+    $bandTable.insertAdjacentHTML("afterbegin", htmlBand);
   });
 }
 

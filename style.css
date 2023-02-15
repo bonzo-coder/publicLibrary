@@ -101,7 +101,7 @@ form {
 }
 
 .inputBox > div > input:hover {
-    box-shadow: inset 0 0 5px 4px #b963f3;
+    box-shadow: inset 0 0 5px 4px #b663eec4;
     background-color: var(--boxBackground);
     outline: none;
     transition: 0.3s ease-in-out;

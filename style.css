@@ -108,7 +108,7 @@ form {
 }
 
 .inputBox > div > input:valid:focus {
-    box-shadow: inset 0 0 5px 4px #63f36a;
+    box-shadow: inset 0 0 5px 4px #63f36afa;
     background-color: var(--boxBackground);
     outline: none;
 }
